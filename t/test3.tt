@@ -1,0 +1,3 @@
+[% USE Perl -%]
+log(100, 3) = [% Perl.log(100, 3) %]
+sprintf("%.0f", 7.8) = [% Perl.sprintf("%.0f", 7.8) %]
