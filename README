@@ -1,4 +1,4 @@
-Template-Plugin-Perl version 0.01
+Template-Plugin-Perl version 0.02
 =================================
 
 This is a plugin for Perl Template Toolkit. It imports almost all the
@@ -30,7 +30,7 @@ COPYRIGHT AND LICENCE
 
 Put the correct copyright and licence information here.
 
-Copyright (C) 2005 by Agent Zhang
+Copyright (C) 2005 Agent Zhang
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

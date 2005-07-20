@@ -1,5 +1,5 @@
 name: Template-Plugin-Perl
-version: 0.01
+version: 0.02
 abstract: Perl Template Toolkit Plugin to Import Perl Built-in Functions
 author: Agent Zhang <agent2002@126.com>
 license: perl

@@ -1,8 +1,8 @@
 #: Template/Plugin/Perl.pm
 #: Implementation for the Perl Plugin module
-#: Template-Plugin-Perl v0.01
+#: Template-Plugin-Perl v0.02
 #: Copyright (c) 2005 Agent Zhang
-#: 2005-07-11 2005-07-19
+#: 2005-07-11 2005-07-20
 
 package Template::Plugin::Perl;
 
@@ -15,7 +15,7 @@ use Template::Plugin;
 use base qw( Template::Plugin );
 use vars qw( $AUTOLOAD );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 $Data::Dumper::Indent = 0;
 *throw = \&Template::Plugin::Perl::throw;
@@ -116,11 +116,13 @@ Please keep in mind I just used AUTOLOAD, eval, and Data::Dumper to do the
 magic here.
 
 If you're looking for even more functions, I suggest you take a look at the
-Template::Plugin::POSIX module which exports the excellent POSIX repertoire.
+L<Template::Plugin::POSIX> module which exports the excellent POSIX repertoire.
 
 =head1 SEE ALSO
 
-L<Template::Manual>,
+L<Template>,
+L<Template::Plugin::POSIX>,
+L<Data::Dumper>
 
 =head1 AUTHOR
 
