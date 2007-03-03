@@ -1,16 +1,17 @@
-name: Template-Plugin-Perl
-version: 0.02
-abstract: Perl Template Toolkit Plugin to Import Perl Built-in Functions
-author: Agent Zhang <agent2002@126.com>
-license: perl
-distribution_type: module
+abstract: TT2 plugin to import Perl built-in functions
+author: 'Agent Zhang, <agentzh@gmail.com>'
 build_requires:
-  Test::More: 0
-  File::Compare: 0
-requires:
-  Template: 0
-  Data::Dumper: 0
+  Test::Base: 0.53
+distribution_type: module
+generated_by: Module::Install version 0.64
+license: perl
+name: Template-Plugin-Perl
 no_index:
   directory:
     - inc
-generated_by: Module::Install version 0.36
+    - t
+requires:
+  Data::Dumper: 0
+  Template: 2.14
+  perl: 5.6.1
+version: 0.03

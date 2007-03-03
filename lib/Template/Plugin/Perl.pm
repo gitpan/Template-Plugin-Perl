@@ -1,21 +1,15 @@
-#: Template/Plugin/Perl.pm
-#: Implementation for the Perl Plugin module
-#: Template-Plugin-Perl v0.02
-#: Copyright (c) 2005 Agent Zhang
-#: 2005-07-11 2005-07-20
-
 package Template::Plugin::Perl;
 
-#use 5.006001;
+use 5.006001;
 use strict;
-#use warnings;
+use warnings;
 
 use Data::Dumper;
 use Template::Plugin;
 use base qw( Template::Plugin );
-use vars qw( $AUTOLOAD );
+use vars qw( $AUTOLOAD $VERSION );
 
-our $VERSION = '0.02';
+$VERSION = '0.03';
 
 $Data::Dumper::Indent = 0;
 *throw = \&Template::Plugin::Perl::throw;
@@ -33,7 +27,7 @@ sub AUTOLOAD {
     my $self = shift;
     my $method = $AUTOLOAD;
     #warn "$method";
-    
+
     $method =~ s/.*:://;
     return if $method eq 'DESTROY';
 
@@ -51,12 +45,14 @@ sub AUTOLOAD {
     my $code = "$method(".join(',', @args).")";
     #warn "code: $code\n";
     $entered = 1;
-    my $retval = eval $code;
+    my @retval = eval $code;
     $entered = 0;
     if ($@) {
         $self->throw("Perl built-in function error: $@");
     }
-    return $retval;
+    if (!@retval) { return (); }
+    if (@retval == 1) { $retval[0] }
+    else { \@retval };
 }
 
 sub throw {
@@ -74,7 +70,11 @@ __END__
 
 =head1 NAME
 
-Template::Plugin::Perl - Plugin to Import Perl Built-in Functions
+Template::Plugin::Perl - TT2 plugin to import Perl built-in functions
+
+=head1 VERSION
+
+This document describes Template::Plugin::Perl 0.03 released on 3 March, 2007.
 
 =head1 SYNOPSIS
 
@@ -107,10 +107,13 @@ feature. However, there is no doubt that we could treat "Perl.eval" as a
 good workaround, just as the L</SYNOPSIS> demonstrates.
 
 According to the current implementation, don't use the functions for real 
-@ARRAYs, such as B<shift>, B<pop>. They won't function at all. Moreover, 
+@ARRAYs, such as B<shift>, B<pop>. They won't function at all. However,
+C<sort>, C<join>, and C<reverse> are notable exceptions. Moreover, 
 Arguments of all Perl.* functions are passed by values, and returned in 
 scalar context, so some functions for list data, like B<map> and B<grep>, 
 make little sense in this context.
+
+builtins that modify their arguments won't work either, such as C<chomp>, C<chop>, and C<pos>.
 
 Please keep in mind I just used AUTOLOAD, eval, and Data::Dumper to do the
 magic here.
@@ -118,22 +121,61 @@ magic here.
 If you're looking for even more functions, I suggest you take a look at the
 L<Template::Plugin::POSIX> module which exports the excellent POSIX repertoire.
 
+=head1 METHODS
+
+=over
+
+=item new
+
+Constructor called by the TT2 template system
+
+=item throw
+
+TT2 exception handling procedure.
+
+=item pow
+
+Non-Perl builtin added for ease of use
+
+=back
+
+=head1 TODO
+
+=over
+
+=item *
+
+Add more unit tests
+
+=back
+
+=head1 SOURCE CONTROL
+
+You can always get the latest version of the source code from
+the follow Subversion repository:
+
+L<http://svn.openfoundry.org/ttperl>
+
+There is anonymous access to all.
+
+If you'd like a commit bit, please let me know :)
+
+=head1 AUTHOR
+
+Agent Zhang, E<lt>agentzh@gmail.comE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (c) 2005, 2006, 2007 by Agent Zhang. All rights reserved.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
 =head1 SEE ALSO
 
 L<Template>,
 L<Template::Plugin::POSIX>,
 L<Data::Dumper>
 
-=head1 AUTHOR
-
-Agent Zhang, E<lt>agent2002@126.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (c) 2005 Agent Zhang.
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.1 or,
-at your option, any later version of Perl 5 you may have available.
-
 =cut
+
