@@ -1,5 +1,8 @@
 Revision history for Perl extension Template::Plugin::Perl.
 
+0.04  2007-05-07
+* fixed a bug in the test regarding the crypt builtin.
+
 0.03  2007-03-03
 * fixed various bugs
 * improved the POD a bit

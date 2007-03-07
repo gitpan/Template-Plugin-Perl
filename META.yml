@@ -14,4 +14,4 @@ requires:
   Data::Dumper: 0
   Template: 2.14
   perl: 5.6.1
-version: 0.03
+version: 0.04

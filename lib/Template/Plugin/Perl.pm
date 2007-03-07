@@ -9,7 +9,7 @@ use Template::Plugin;
 use base qw( Template::Plugin );
 use vars qw( $AUTOLOAD $VERSION );
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 $Data::Dumper::Indent = 0;
 *throw = \&Template::Plugin::Perl::throw;
@@ -74,7 +74,7 @@ Template::Plugin::Perl - TT2 plugin to import Perl built-in functions
 
 =head1 VERSION
 
-This document describes Template::Plugin::Perl 0.03 released on 3 March, 2007.
+This document describes Template::Plugin::Perl 0.04 released on 7 March, 2007.
 
 =head1 SYNOPSIS
 

@@ -27,12 +27,10 @@ run {
 
 __DATA__
 
-=== TEST 1: chr, crypt, hex, and index
+=== TEST 1: chr, hex, and index
 --- tt
 [% Perl.chr(97) %]
 [% var = 48; Perl.chr(var) %]
-
-[% Perl.crypt('a', 3) %]
 
 [% Perl.hex(3) %]
 [% var = 'a'; Perl.hex(var) %]
@@ -44,8 +42,6 @@ __DATA__
 a
 0
 
-33AH6l25Stz2Q
-
 3
 10
 
@@ -54,7 +50,16 @@ a
 
 
 
-=== TEST 2: lc, lcfirst, length, oct, and ord
+=== TEST 2: crypt
+--- tt
+
+[% Perl.crypt('a', 3) %]
+
+--- out_like: \S+
+
+
+
+=== TEST 3: lc, lcfirst, length, oct, and ord
 --- tt
 [% Perl.lc('Hello, World') %]
 [% Perl.lcfirst('Hello, World') %]
@@ -77,7 +82,7 @@ hello, World
 
 
 
-=== TEST 3: reverse, rindex, sprintf, and substr
+=== TEST 4: reverse, rindex, sprintf, and substr
 --- tt
 [% Perl.reverse('hello', 'world').join(': ') %]
 [% Perl.rindex('hello', 'l') %]
@@ -92,7 +97,7 @@ llo
 
 
 
-=== TEST 4: uc and ucfirst
+=== TEST 5: uc and ucfirst
 --- tt
 [% Perl.uc('Hello, World') %]
 [% Perl.ucfirst('hello, world') %]
@@ -103,7 +108,7 @@ Hello, world
 
 
 
-=== TEST 5: quotemeta, split
+=== TEST 6: quotemeta, split
 --- tt
 [% Perl.quotemeta("(hello*)") %]
 [% Perl.split(',\s*', 'hello, world').join(':') %]
@@ -114,7 +119,7 @@ hello:world
 
 
 
-=== TEST 6: abs
+=== TEST 7: abs
 --- tt
 [% Perl.abs(-3) %]
 [% Perl.abs(0) %]
@@ -127,7 +132,7 @@ hello:world
 
 
 
-=== TEST 7: atan2
+=== TEST 8: atan2
 --- tt
 [% Perl.atan2(5, 2) %]
 
@@ -135,7 +140,7 @@ hello:world
 
 
 
-=== TEST 8: cos
+=== TEST 9: cos
 --- tt
 [% Perl.cos(10) %]
 
@@ -143,7 +148,7 @@ hello:world
 
 
 
-=== TEST 9: exp
+=== TEST 10: exp
 --- tt
 [% Perl.exp(2) %]
 
@@ -151,7 +156,7 @@ hello:world
 
 
 
-=== TEST 10: int
+=== TEST 11: int
 --- tt
 [% Perl.int(-1.3) %]
 [% Perl.int(3.14) %]
@@ -164,14 +169,14 @@ hello:world
 
 
 
-=== TEST 11: log
+=== TEST 12: log
 --- tt
 [% Perl.log(100) %]
 --- out_like: ^4\.60517\d+\n$
 
 
 
-=== TEST 12: rand and srand
+=== TEST 13: rand and srand
 --- tt
 [% Perl.srand(0) %] [% Perl.rand(5) %]
 
@@ -179,7 +184,7 @@ hello:world
 
 
 
-=== TEST 13: sin and sqrt
+=== TEST 14: sin and sqrt
 --- tt
 [% Perl.sin(52) %] [% Perl.sqrt(2) %]
 
@@ -187,7 +192,7 @@ hello:world
 
 
 
-=== TEST 14: join and sort
+=== TEST 15: join and sort
 --- tt
 [% Perl.join(',', 'a', 'b', 'c') %]
 [% list = ['a', 'b', 'c']; Perl.join(',', list) %]
@@ -202,7 +207,7 @@ a b c
 
 
 
-=== TEST 15: eval
+=== TEST 16: eval
 --- tt
 [% Perl.eval('2**3') %]
 [% Perl.eval('qw/hello world/').join(',') %]
@@ -213,7 +218,7 @@ hello,world
 
 
 
-=== TEST 16: glob
+=== TEST 17: glob
 --- tt
 [% Perl.glob('t/*.t').join(' ') %]
 
@@ -221,7 +226,7 @@ hello,world
 
 
 
-=== TEST 17: pow
+=== TEST 18: pow
 --- tt
 [% Perl.pow(2, 3) %]
 
