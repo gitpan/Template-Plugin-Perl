@@ -180,7 +180,7 @@ hello:world
 --- tt
 [% Perl.srand(0) %] [% Perl.rand(5) %]
 
---- out_like: ^1 0\.85414\d+\n$
+--- out_like: ^1 [0-4]\.\d+\n$
 
 
 

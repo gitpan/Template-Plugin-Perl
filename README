@@ -2,8 +2,8 @@ NAME
     Template::Plugin::Perl - TT2 plugin to import Perl built-in functions
 
 VERSION
-    This document describes Template::Plugin::Perl 0.04 released on 7 March,
-    2007.
+    This document describes Template::Plugin::Perl 0.05 released on 10
+    March, 2007.
 
 SYNOPSIS
       [% USE Perl %]
