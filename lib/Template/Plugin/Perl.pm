@@ -1,6 +1,5 @@
 package Template::Plugin::Perl;
 
-use 5.006001;
 use strict;
 use warnings;
 
@@ -9,7 +8,7 @@ use Template::Plugin;
 use base qw( Template::Plugin );
 use vars qw( $AUTOLOAD $VERSION );
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 $Data::Dumper::Indent = 0;
 *throw = \&Template::Plugin::Perl::throw;
@@ -74,7 +73,7 @@ Template::Plugin::Perl - TT2 plugin to import Perl built-in functions
 
 =head1 VERSION
 
-This document describes Template::Plugin::Perl 0.05 released on 10 March, 2007.
+This document describes Template::Plugin::Perl 0.06 released on 12 March, 2007.
 
 =head1 SYNOPSIS
 

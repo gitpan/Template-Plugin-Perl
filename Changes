@@ -1,9 +1,13 @@
 Revision history for Perl extension Template::Plugin::Perl.
 
-0.05  2007-05-10
+0.06  2007-03-12
+* bundled Test::Base into inc/, so no burden on the user side.
+* degrade the perl version we require here.
+
+0.05  2007-03-10
 * fixed a Win32 failing test
 
-0.04  2007-05-07
+0.04  2007-03-07
 * fixed a bug in the test regarding the crypt builtin.
 
 0.03  2007-03-03
